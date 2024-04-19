@@ -2,8 +2,7 @@ import React from 'react';
 import civilData from '../data';
 
 import "./Accordion.css"
-import MyAccordion from "../Accordion/MyAccordion/MyAccordion.jsx";
-
+import MyAccordion from '../MyAccordion/MyAccordion';
 function Accordion({firstCheck}) {
   // Extracting the keys from civilData
  
