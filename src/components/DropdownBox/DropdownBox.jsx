@@ -16,8 +16,8 @@ function DropdownBox() {
           {/* Adjust the type attribute to "checkbox" */}
           <input
             className="check-box"
-            type="checkbox"  // Correct the typo in type attribute
-            checked={firstCheck}  // Make sure the checkbox is controlled
+            type="checkbox"  
+            checked={firstCheck}  
             onChange={togglePackageCheck}
           />
           <p>Package</p>

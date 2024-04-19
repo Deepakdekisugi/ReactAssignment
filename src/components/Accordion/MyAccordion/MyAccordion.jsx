@@ -5,6 +5,8 @@ import "./MyAccordion.css";
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 
 function MyAccordion({ ele ,firstCheck,setFirstCheck }) {
   const [expanded, setExpanded] = useState(true);
@@ -25,12 +27,12 @@ function MyAccordion({ ele ,firstCheck,setFirstCheck }) {
           <div className="civil-container-left">
             {/* Conditionally render the appropriate icon */}
             {expanded ? (
-              <KeyboardArrowUpIcon
+              <RemoveOutlinedIcon
                 className="drop-icon"
                 onClick={() => setExpanded((prevExpanded) => !prevExpanded)}
               />
             ) : (
-              <KeyboardArrowDownIcon
+              <AddOutlinedIcon
                 className="drop-icon"
                 onClick={() => setExpanded((prevExpanded) => !prevExpanded)}
               />

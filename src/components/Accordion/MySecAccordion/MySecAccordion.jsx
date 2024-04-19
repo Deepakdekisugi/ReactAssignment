@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import "./MySecAccordion.css";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+
 function MySecAccordion({ item, index, firstCheck, secondCheck }) {
   const [show, setShow] = useState(false);
   const [thirdCheck, setThirdCheck] = useState(false);
