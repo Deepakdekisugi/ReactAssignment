@@ -8,7 +8,7 @@ function Options() {
     const handleOptionClick = (option) => {
         setActiveOption(option);
         if (option === 'option-2') {
-            console.log('Hello World'); // Print Hello World when option-2 is clicked
+            console.log('Hello World'); 
         }
     };
 

@@ -6,12 +6,12 @@ import Accordion from '../Accordion/Accordion';
 import { useState } from 'react';
 
 function DropdownBox() {
-  // Access context
+
 
   const [firstCheck,setFirstCheck]= useState(false);
  
 
-  // Function to toggle the packageCheck state
+
   const togglePackageCheck = () => {
       setFirstCheck(!firstCheck);
   };

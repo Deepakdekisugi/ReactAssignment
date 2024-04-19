@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import "./MySecAccordion.css";
-
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 function MySecAccordion({ item, index, firstCheck, secondCheck }) {
   const [show, setShow] = useState(false);
   const [thirdCheck, setThirdCheck] = useState(false);
+
   // Initialize an array of states for each fourth checkbox
   const [fourthCheckArray, setFourthCheckArray] = useState(
     new Array(item.length).fill(false)
   );
 
-  // Function to handle thirdCheck state
+ 
   const handleThird = () => {
     setThirdCheck((prev) => !prev);
   };
 
-  // Function to handle fourthCheck state for a specific checkbox
+  
   const handleFourth = (idx) => {
     setFourthCheckArray((prevArray) => {
 
@@ -26,12 +28,10 @@ function MySecAccordion({ item, index, firstCheck, secondCheck }) {
     });
   };
 
-  // Update thirdCheck based on firstCheck and secondCheck
   useEffect(() => {
     setThirdCheck(firstCheck || secondCheck);
   }, [firstCheck, secondCheck]);
 
-  // Update each fourth checkbox state based on thirdCheck
   useEffect(() => {
     setFourthCheckArray((prevArray) => prevArray.map(() => thirdCheck));
   }, [thirdCheck]);

@@ -5,7 +5,7 @@ import DropdownBox from './components/DropdownBox/DropdownBox';
 
 import FormComponent from './components/form/form';
 function App() {
-  // Create a state for the UserContext value
+  
   const [checked,setChecked]=useState(false);
 
   return (
