@@ -80,7 +80,7 @@
   content: "";
   position: absolute;
   left: -16px;
-  top: -12px;
+  top: -11px;
   width: 1px;
   height: 100%;
   background-color: rgb(233, 214, 214);
@@ -90,7 +90,7 @@
   content: "";
   position: absolute;
   left: -15px;
-  bottom: 50%;
+  bottom: 43%;
   width: 15px;
   height: 1px;
   background-color: rgb(225, 210, 210);
