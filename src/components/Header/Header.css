@@ -11,15 +11,16 @@
     margin-left: auto;
     margin-right: auto;
     padding: 10px 20px;
-    .header-left-icon{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    .icon{
-        font-size: smaller;
-    }
+}
+
+.header-left-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    font-size: smaller;
 }
 
 .header-left {
@@ -35,7 +36,6 @@
     align-items: center;
 }
 
-/* Style for the Save button */
 .save-button {
     background-color: lightseagreen; /* Light sea green color */
     color: white;
