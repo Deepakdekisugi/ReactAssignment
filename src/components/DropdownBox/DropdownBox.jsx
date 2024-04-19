@@ -1,37 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import "./DropdownBox.css";
 import Accordion from '../Accordion/Accordion';
 
-
-import { useState } from 'react';
-
 function DropdownBox() {
-
-
-  const [firstCheck,setFirstCheck]= useState(false);
- 
-
+  const [firstCheck, setFirstCheck] = useState(false);
 
   const togglePackageCheck = () => {
-      setFirstCheck(!firstCheck);
+    setFirstCheck(!firstCheck);
   };
 
   return (
     <div className="main">
       <div className="table-heading">
-
         <div className="package-box">
-           <input className='check-box' type="checkBox" onChange={togglePackageCheck} />
-           <p>Package</p>
+          {/* Adjust the type attribute to "checkbox" */}
+          <input
+            className="check-box"
+            type="checkbox"  // Correct the typo in type attribute
+            checked={firstCheck}  // Make sure the checkbox is controlled
+            onChange={togglePackageCheck}
+          />
+          <p>Package</p>
         </div>
 
         <div className="table-heading-right">
           <div className="Rate box">Rate (in sqft)</div>
-          <div class="Total box">Total</div>
+          <div className="Total box">Total</div>
         </div>
       </div>
 
-      
       <Accordion firstCheck={firstCheck} />
     </div>
   );
