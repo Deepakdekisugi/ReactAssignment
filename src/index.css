@@ -12,10 +12,19 @@
 html,body{
   width: 100%;
   height: 100%;
-  
+ 
 
 }
 
 *::-webkit-scrollbar {
   display: none;
 }
+
+
+/* input[type="checkbox"]{
+  outline: 1px solid black;
+}
+input:checked{
+  accent-color: white;
+  background-color: #fff;
+} */

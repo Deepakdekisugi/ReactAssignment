@@ -1,5 +1,8 @@
 /* CSS for the options component */
-
+*{
+    text-decoration: none;
+    
+}
 .options {
     display: flex;
     width: 80vw;
