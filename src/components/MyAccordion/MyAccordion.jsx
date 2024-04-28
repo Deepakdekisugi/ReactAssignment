@@ -1,31 +1,60 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import MySecAccordion from "../MySecAccordion/MySecAccordion";
 import "./MyAccordion.css";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
-
-function MyAccordion({ ele ,firstCheck,setFirstCheck }) {
+function MyAccordion({
+  ele,
+  firstCheck,
+  setFirstCheck,
+  secondCheck,
+  setSecondCheck,
+}) {
   const [expanded, setExpanded] = useState(true);
-  const [secondCheck,setSecondCheck]= useState(false);
+  const [thirdCheckArray, setThirdCheckArray] = useState(
+    new Array(ele.activity.length).fill(false)
+  );
 
-  const handleChange = ()=>{
-    setSecondCheck(prev => !prev);
-  }
-  useEffect(() => {
-    // When firstCheck changes, update secondCheck based on its value
-    setSecondCheck(firstCheck);
-}, [firstCheck, setSecondCheck]);
+  const handleSecondChange = () => {
+    const newSecondCheck = !secondCheck;
+    setSecondCheck(newSecondCheck);
+    // Update `thirdCheckArray` based on the new value of `secondCheck`
+    setThirdCheckArray(new Array(ele.activity.length).fill(newSecondCheck));
+};
+
+// Adjust `useEffect` hooks to prevent unnecessary updates
+// useEffect(() => {
+//     console.log('3');
+
+//     setSecondCheck(firstCheck);
+//     setThirdCheckArray(new Array(ele.activity.length).fill(firstCheck));
+// }, [firstCheck]);
+
+
+
+useEffect(()=>{
+   if(secondCheck){
+    //make all the third Check true
+    setThirdCheckArray(new Array(ele.activity.length).fill(true));
+   }
+},[secondCheck])
+
+
+useEffect(() => {
+    console.log('4');
+
+    const allThirdChecked = thirdCheckArray.every((checked) => checked);
+    setSecondCheck(allThirdChecked);
+    
+}, [thirdCheckArray]);
+
 
   return (
     <>
       <div className="civil-container">
         <div className="temp-container">
           <div className="civil-container-left">
-            {/* Conditionally render the appropriate icon */}
             {expanded ? (
               <RemoveOutlinedIcon
                 className="drop-icon"
@@ -37,8 +66,12 @@ function MyAccordion({ ele ,firstCheck,setFirstCheck }) {
                 onClick={() => setExpanded((prevExpanded) => !prevExpanded)}
               />
             )}
-           
-            <input className="check-box" type="checkbox" checked={firstCheck || secondCheck} onChange={handleChange}/>
+            <input
+              className="check-box"
+              type="checkbox"
+              checked={firstCheck || secondCheck}
+              onChange={handleSecondChange}
+            />
             <p>{ele.name}</p>
           </div>
           <div className="civil-container-right">
@@ -48,12 +81,30 @@ function MyAccordion({ ele ,firstCheck,setFirstCheck }) {
         </div>
       </div>
 
-      {/* Render activities based on the `expanded` state */}
-      {expanded && ele.activity.map((item, index) => (
-        <div key={index} className="activity-box">
-          <MySecAccordion item={item} index={index} firstCheck={firstCheck} secondCheck={secondCheck} />
-        </div>
-      ))}
+      {expanded &&
+        ele.activity.map((item, index) => (
+          <div key={index} className="activity-box">
+            <MySecAccordion
+              item={item}
+              index={index}
+              firstCheck={firstCheck}
+              secondCheck={secondCheck}
+              setSecondCheck={setSecondCheck}
+              thirdCheck={thirdCheckArray[index]}
+              setThirdCheck={(value) => {
+                setThirdCheckArray((prevArray) => {
+                  const newArray = [...prevArray];
+                  newArray[index] = value;
+                  const allThirdChecked = newArray.every((checked) => checked);
+                  if (secondCheck !== allThirdChecked) {
+                    setSecondCheck(allThirdChecked);
+                  }
+                  return newArray;
+                });
+              }}
+            />
+          </div>
+        ))}
     </>
   );
 }

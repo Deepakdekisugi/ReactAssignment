@@ -17,7 +17,8 @@ function DropdownBox() {
           <input
             className="check-box"
             type="checkbox"  
-            checked={firstCheck}  
+            checked={firstCheck}
+           
             onChange={togglePackageCheck}
           />
           <p>Package</p>
@@ -29,7 +30,7 @@ function DropdownBox() {
         </div>
       </div>
 
-      <Accordion firstCheck={firstCheck} />
+      <Accordion firstCheck={firstCheck} setFirstCheck={setFirstCheck} />
     </div>
   );
 }
